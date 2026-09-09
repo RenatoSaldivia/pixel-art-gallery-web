@@ -1,42 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #121218;
+    color: #e2e2ec;
 }
 
-header {
-    background-color: #4A4A4A;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-/* Estilo para la imagen de portada */
-.cover-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-    margin: 0 auto;
-    image-rendering: pixelated;
-}
-
-/* Opcional: Espacio debajo del header */
-header h1 {
-    margin-top: 20px;
-}
-
-/* Estilos para la barra de navegación */
+/* ===================================================
+   BARRA DE NAVEGACIÓN
+   =================================================== */
 nav {
-    background-color: #333;
-    padding: 10px;
+    background-color: #1a1a24;
+    padding: 10px 0;
     text-align: center;
-    position: fixed;
+    position: sticky;
     top: 0;
     width: 100%;
     z-index: 1000;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.55);
+    border-bottom: 1px solid #282836;
 }
 
 nav ul {
@@ -51,16 +37,19 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #dedee8;
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 18px;
     display: block;
-    transition: background-color 0.3s;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 4px;
 }
 
 nav ul li a:hover {
-    background-color: #575757;
+    background-color: #282838;
+    color: #ffd700;
 }
 
 nav ul li .dropdown-menu {
@@ -69,10 +58,20 @@ nav ul li .dropdown-menu {
     top: 100%;
     left: 0;
     list-style-type: none;
-    padding: 0;
+    padding: 6px 0;
     margin: 0;
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #1a1a24;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.65);
+    min-width: 220px;
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #2d2d3d;
+    border-top: none;
+    text-align: left;
+}
+
+nav ul li .dropdown-menu li {
+    display: block;
+    width: 100%;
 }
 
 nav ul li:hover .dropdown-menu {
@@ -80,285 +79,288 @@ nav ul li:hover .dropdown-menu {
 }
 
 .dropdown-menu li a {
-    padding: 10px 20px;
-    display: block;
-    color: #000;
+    padding: 10px 18px;
+    color: #c5c5d4;
+    font-size: 14px;
 }
 
 .dropdown-menu li a:hover {
-    background-color: #f2f2f2;
+    background-color: #282838;
+    color: #ffd700;
 }
 
+/* ===================================================
+   PORTADA COMPLETA
+   =================================================== */
+header {
+    margin: 0;
+    padding: 0;
+}
+
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    background-color: #1a1a24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.cover-banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    margin: 0;
+    padding: 0;
+}
+
+.banner-overlay {
+    position: absolute;
+    text-align: center;
+    background: rgba(14, 14, 20, 0.86);
+    padding: 18px 32px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.banner-overlay h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: #ffd700;
+    text-shadow: 3px 3px 0 #000;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.banner-subtitle {
+    font-size: 0.85rem;
+    color: #d1d1dc;
+    margin: 0;
+    letter-spacing: 1.2px;
+}
+
+/* ===================================================
+   GALERÍA Y TARJETAS DE OBRAS
+   =================================================== */
+main#galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 16px;
+}
+
+.art-piece {
+    margin: 0;
+    background-color: #191922;
+    border: 1px solid #2a2a38;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    display: inline-block;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.art-piece:hover {
+    transform: translateY(-5px);
+    border-color: #ffd700;
+    box-shadow: 0 10px 24px rgba(255, 215, 0, 0.14);
+}
+
+.art-piece img {
+    width: 155px;
+    height: 155px;
+    object-fit: contain;
+    background-color: #13131a;
+    display: block;
+    margin: 0 auto;
+    padding: 8px;
+    cursor: pointer;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    transition: transform 0.2s ease;
+}
+
+.art-piece img:hover {
+    transform: scale(1.05);
+}
+
+figcaption {
+    padding: 10px 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #dedee8;
+    background-color: #191922;
+    border-top: 1px solid #2a2a38;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 155px;
+}
+
+/* ===================================================
+   MODAL DE VISTA EN DETALLE
+   =================================================== */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1000;
+    z-index: 2500;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(8, 8, 12, 0.92);
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(4px);
+}
+
+.modal-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 90vw;
+    width: fit-content;
 }
 
 .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: auto;
+    background: transparent;
+    width: auto;
+    height: auto;
+    min-width: 320px;
+    max-width: 85vw;
+    max-height: 58vh;
     display: block;
-    width: 100%;
-    height: auto;
+
     image-rendering: pixelated;
-}
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 
-/* Aplicar la fuente de pixel art solo a los títulos */
-h1,
-h2 {
-    font-family: 'Press Start 2P', cursive;
-    /* Cambia esto por la fuente que elijas */
-    text-align: center;
-    /* Centrar el texto si lo deseas */
-}
-
-/* Mantener la fuente normal para el contenido */
-.about-me,
-.contact-modal {
-    font-family: 'Arial', sans-serif;
-    /* Cambia 'Arial' por la fuente que prefieras para el contenido */
-    text-align: justify;
-    /* Asegúrate de que el contenido esté justificado */
-}
-
-/* Estilo base para inputs y textarea */
-.contact-modal-content input,
-.contact-modal-content textarea {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    /* Tamaño de fuente */
-    font-family: Arial, sans-serif;
-    /* Fuente común para ambos elementos */
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.contact-modal-content input:focus,
-.contact-modal-content textarea:focus {
-    outline: none;
-    border-color: #6c63ff;
-    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
-}
-
-button {
-    background-color: #4A4A4A;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #555;
-}
-
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-figure {
-    margin: 15px;
-    border: 2px solid #444;
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-figure img {
-    width: 135px;
-    height: 135px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-figure img:hover {
-    transform: scale(1.1);
-}
-
-img {
-    margin: 10px;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    width: 135px;
-    height: auto;
-    cursor: pointer;
-}
-
-.modal-content img {
-    cursor: default;
-}
-
-/* Modal de "Sobre mí" */
-.about-me-modal-content {
-    text-align: justify;
-    padding: 15px;
-}
-
-.about-me-image {
-    width: 200px;
-    height: auto;
-    border-radius: 10px;
-    image-rendering: pixelated;
-    display: block;
-    margin: 0 auto;
-}
-
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #4A4A4A;
-    color: white;
-    position: relative;
-    width: 100%;
-    bottom: 0;
-}
-
-figcaption {
-    text-align: center;
-    padding: 10px;
+    border: 3px solid #ffd700;
+    border-radius: 8px;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.9);
+    margin: 0 0 14px 0;
 }
 
 #caption {
+    width: 100%;
+    min-width: 320px;
+    max-width: 520px;
+    background-color: #1a1a24;
+    border: 1px solid #333345;
+    border-radius: 8px;
+    padding: 14px 20px;
     text-align: center;
-    color: white;
-    margin: 15px;
+    color: #e5e5f0;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.7);
 }
 
+#caption h3 {
+    margin: 0 0 8px 0;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.95rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000;
+}
+
+#caption p {
+    margin: 5px 0;
+    font-size: 0.88rem;
+    color: #c5c5d5;
+    line-height: 1.45;
+}
+
+#caption strong {
+    color: #70b4ff;
+}
+
+/* Botón cerrar */
 .close {
     position: absolute;
-    top: 10px;
-    right: 25px;
-    color: white;
-    font-size: 35px;
+    top: 20px;
+    right: 30px;
+    color: #aaaab8;
+    font-size: 38px;
     font-weight: bold;
     cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+    user-select: none;
 }
 
-.social-icons {
-    margin-top: 10px;
-}
-
-.social-icons a {
-    color: white;
-    margin: 0 10px;
-    font-size: 20px;
-    text-decoration: none;
-}
-
-.social-icons a:hover {
-    color: #ddd;
-}
-
-/* Estilos de la galería */
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.gallery img {
-    width: 135px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.gallery img:hover {
+.close:hover {
+    color: #ff5555;
     transform: scale(1.1);
 }
 
-/* Las flechas de navegación (anterior/siguiente) */
+/* Flechas de navegación */
 .prev,
 .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
+    transform: translateY(-50%);
+    padding: 16px 20px;
+    color: #ffd700;
     font-weight: bold;
-    font-size: 30px;
-    transition: 0.3s;
+    font-size: 28px;
+    transition: background-color 0.2s, color 0.2s;
+    border-radius: 6px;
     user-select: none;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(18, 18, 26, 0.7);
+    border: 1px solid #2d2d3d;
+    text-decoration: none;
 }
 
-/* Posiciona la flecha a la izquierda */
-.prev {
-    left: 0;
-    border-radius: 0 3px 3px 0;
-}
+.prev { left: 25px; }
+.next { right: 25px; }
 
-/* Posiciona la flecha a la derecha */
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
-
-/* Efecto hover en las flechas */
 .prev:hover,
 .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(255, 215, 0, 0.2);
+    color: #fff;
+    border-color: #ffd700;
 }
 
-/* Imagen que se expande al hacer clic */
-.modal-content {
-    animation-name: zoom;
-    animation-duration: 0.6s;
-    transition: transform 0.3s ease;
+/* ===================================================
+   MODALES CONTACTO & ABOUT ME (TEMA OSCURO COHERENTE)
+   =================================================== */
+.contact-modal-content,
+.about-me-modal-content {
+    background-color: #1a1a24;
+    border: 1px solid #323244;
+    padding: 28px;
+    border-radius: 10px;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.75);
+    color: #dedee8;
 }
 
-@keyframes zoom {
-    from {
-        transform: scale(0);
-    }
-
-    to {
-        transform: scale(1);
-    }
-}
-
-.cursor-default {
-    cursor: default;
-}
-
-/* Modal de contacto */
-.contact-modal-content {
-    background-color: #f4f4f4;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: auto;
-    animation: fadeIn 0.5s;
-}
-
-.contact-modal-content h2 {
+.contact-modal-content h2,
+.about-me-modal-content h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.1rem;
+    color: #ffd700;
+    text-shadow: 2px 2px 0 #000;
     text-align: center;
-    color: #333;
-    font-size: 24px;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 22px;
 }
 
 .contact-modal-content form {
@@ -367,33 +369,99 @@ figcaption {
 }
 
 .contact-modal-content label {
-    margin: 10px 0 5px;
-    color: #555;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 13px;
+    color: #a8a8ba;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+.contact-modal-content input,
+.contact-modal-content textarea {
+    padding: 11px 14px;
+    background-color: #121218;
+    border: 1px solid #303042;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #f0f0f5;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.contact-modal-content input:focus,
+.contact-modal-content textarea:focus {
+    border-color: #ffd700;
 }
 
 .contact-submit-btn {
-    background-color: #6c63ff;
-    color: #fff;
-    padding: 12px;
+    background-color: #ffd700;
+    color: #121218;
+    padding: 13px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
+    font-weight: 700;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.2s, transform 0.1s;
 }
 
 .contact-submit-btn:hover {
-    background-color: #575757;
+    background-color: #ffe033;
+    transform: translateY(-1px);
 }
 
-/* Estilo para el footer */
+.about-me-image {
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto 18px auto;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    border: 2px solid #ffd700;
+}
+
+.about-me-modal-content p {
+    text-align: justify;
+    line-height: 1.65;
+    font-size: 14px;
+    color: #c5c5d4;
+    margin: 0;
+}
+
+/* ===================================================
+   FOOTER
+   =================================================== */
 footer {
     text-align: center;
-    padding: 15px 0;
-    background-color: #333;
-    color: white;
-    position: relative;
+    padding: 26px 0;
+    background-color: #14141c;
+    border-top: 1px solid #232330;
+    color: #8c8c9e;
     width: 100%;
-    bottom: 0;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+}
+
+.social-icons a {
+    color: #c5c5d5;
+    margin: 0 12px;
+    font-size: 20px;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+    display: inline-block;
+}
+
+.social-icons a:hover {
+    color: #ffd700;
+    transform: translateY(-2px);
 }

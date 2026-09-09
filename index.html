@@ -1,106 +1,72 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Art Gallery</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Pixel Art Gallery | Renato Saldivia</title>
+    <meta name="description" content="Pixel art collection and creative portfolio by Renato Saldivia.">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <style>
-        /* CSS para ocultar categorías */
-        .category-section {
-            display: none;
-        }
-
-        /* CSS para mostrar todas las obras de arte */
-        .art-piece {
-            margin: 10px;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .art-piece img {
-            width: 200px;
-            height: auto;
-            border: 2px solid #ccc;
-            border-radius: 5px;
-        }
-
-        .art-piece p {
-            margin-top: 10px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#galeria">Gallery</a></li>
-                <li><a href="#" onclick="openContactModal()">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#categoria" class="dropdown-toggle">Category</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#" onclick="showCategory('animales')">Animals</a></li>
-                        <li><a href="#" onclick="showCategory('famosos')">Famous</a></li>
-                        <li><a href="#" onclick="showCategory('anime')">Anime</a></li>
-                        <li><a href="#" onclick="showCategory('all')">All</a></li>
-                    </ul>
-                </li>
-                <li><a href="#about" onclick="openAboutMeModal()">About me</a></li>
-            </ul>
-        </nav>
-        <img src="Art/Profesor Rossa.png" alt="Portada de la galería de pixel art" class="cover-image">
-        <h1 id="home">Pixel Gallery</h1>
-    </header>
-    <main id="galeria">
-        <figure class="art-piece" data-category="famous">
-            <img src="Art/Angus Young.png" alt="Angus Young"
-                onclick="openModal('Art/Angus Young.png', 'Angus Young', 'Icono del rock', '135x135 px')">
-            <figcaption>Angus Young</figcaption>
-        </figure>
-        <figure class="art-piece" data-category="famous">
-            <img src="Art/Audrey Hepburn.png" alt="Audrey Hepburn"
-                onclick="openModal('Art/Audrey Hepburn.png', 'Audrey Hepburn', 'Estrella de cine clásica', '135x135 px')">
-            <figcaption>Audrey Hepburn</figcaption>
-        </figure>
-        <figure class="art-piece" data-category="animals">
-            <img src="Art/Bebito y Lili.png" alt="Bebés"
-                onclick="openModal('Art/Bebito y Lili.png', 'Bebés', 'Estrella de cine clásica', '135x135 px')">
-            <figcaption>Cats</figcaption>
-        </figure>
-        <figure class="art-piece" data-category="animals">
-            <img src="Art/Bebito.png" alt="Bebés" onclick="openModal('Art/Bebito.png', 'Bebés', 'Hijo', '135x135 px')">
-            <figcaption>Bebito</figcaption>
-        </figure>
-        <figure class="art-piece" data-category="anime">
-            <img src="Art/Bee Girl.png" alt="Bebés"
-                onclick="openModal('Art/Bee Girl.png', 'Bee Girl', 'de Blind Melon - No Rain', '135x135 px')">
-            <figcaption>Bee Girl</figcaption>
-        </figure>
-    </main>
+    <!-- 1. El NAV va directo en el BODY para que position: sticky funcione siempre -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#galeria">Gallery</a></li>
+            <li class="dropdown">
+                <a href="#galeria" class="dropdown-toggle">Categories</a>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:void(0)" onclick="showCategory('all', event)">All</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('music', event)">Music</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('animation', event)">Animation</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('pop-culture', event)">Pop Culture</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('gaming', event)">Gaming</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('animals', event)">Animals & Pets</a></li>
+                    <li><a href="javascript:void(0)" onclick="showCategory('originals', event)">Originals & Scenes</a></li>
+                </ul>
+            </li>
+            <li><a href="javascript:void(0)" onclick="openAboutMeModal()">About Me</a></li>
+            <li><a href="javascript:void(0)" onclick="openContactModal()">Contact</a></li>
+        </ul>
+    </nav>
 
-    <!-- Modal -->
+    <!-- Header solo para el Banner de portada -->
+    <header class="banner-container" id="home">
+        <img src="Arte/el-profesor-rossa.png" alt="Pixel Art Banner - El Profesor Rossa" class="cover-banner">
+        <div class="banner-overlay">
+            <h1>Pixel Gallery</h1>
+            <p class="banner-subtitle">Precision, Retro Aesthetics & Digital Art</p>
+        </div>
+    </header>
+
+    <!-- Galería generada dinámicamente (sin botones sueltos arriba) -->
+    <main id="galeria"></main>
+
+    <!-- Modal para ver obras ampliadas -->
     <div id="modal" class="modal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modal-image">
-        <div id="caption"></div>
-
-        <!-- Botones para navegar entre imágenes -->
+        <div class="modal-wrapper">
+            <img class="modal-content" id="modal-image" alt="Detalle pixel art">
+            <div id="caption"></div>
+        </div>
         <a class="prev" onclick="navigate(-1)">&#10094;</a>
         <a class="next" onclick="navigate(1)">&#10095;</a>
     </div>
 
     <!-- Modal de Contacto -->
     <div id="contact-modal" class="modal">
-        <div class="modal-content contact-modal-content">
+        <div class="contact-modal-content">
             <span class="close" onclick="closeContactModal()">&times;</span>
-            <h2>Contact</h2>
+            <h2>Get in Touch</h2>
             <form id="contact-form">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Your name..." required>
@@ -111,99 +77,35 @@
                 <label for="message">Message</label>
                 <textarea id="message" name="message" placeholder="Write your message..." rows="4" required></textarea>
 
-                <button type="submit" class="contact-submit-btn">Send</button>
+                <button type="submit" class="contact-submit-btn">Send Message</button>
             </form>
         </div>
     </div>
 
-    <!-- Modal "Sobre mí" -->
+    <!-- Modal About Me -->
     <div id="about-me-modal" class="modal">
-        <div class="modal-content contact-modal-content about-me-modal-content">
+        <div class="about-me-modal-content">
             <span class="close" onclick="closeAboutMeModal()">&times;</span>
             <h2>About Me</h2>
-            <img src="Art/Me.png" alt="Pixel art of myself" class="about-me-image">
+            <img src="Arte/me.png" alt="Renato Saldivia portrait" class="about-me-image">
             <p>
-                Hello! I'm Renato Saldivia, a passionate data analyst with a background in computer engineering and a
-                specialty
-                in data analysis. I have a deep love for pixel art, blending technical precision with creative
-                expression. Whether I'm working on complex data sets or creating intricate pixel designs, I strive for
-                perfection and innovation. My work reflects my dedication to both art and analytics, and I'm always
-                exploring new ways to merge these two worlds.
+                Hi! I'm Renato Saldivia, a computer engineer and data analyst with a deep passion for pixel art and digital creation. I combine analytical precision with aesthetic sensitivity to build clear, engaging visual experiences—whether that means exploring complex data or designing pixel-perfect assets.
             </p>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Renato Saldivia. Todos los derechos reservados.</p>
+        <p>© 2026 Renato Saldivia. All rights reserved.</p>
         <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=100091880407211" target="_blank"><i
-                    class="fab fa-facebook-f"></i></a>
-            <a href="https://x.com/PriceRengy" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://www.instagram.com/pixel_rengy/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/renatosaldiviap/" target="_blank"><i
-                    class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100091880407211" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/PriceRengy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/pixel_rengy/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/renatosaldiviap/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
         </div>
     </footer>
 
+    <script src="gallery.js"></script>
     <script src="script.js"></script>
-    <script>
-        let inGallery = false;
-
-        // Función para mostrar los dibujos según la categoría seleccionada
-        function showCategory(category) {
-            const artPieces = document.querySelectorAll('.art-piece');
-            artPieces.forEach(piece => {
-                if (category === 'all' || piece.getAttribute('data-category') === category) {
-                    piece.style.display = 'inline-block';
-                } else {
-                    piece.style.display = 'none';
-                }
-            });
-
-            // Desplazar a la sección de galería solo si no estamos en ella
-            if (!inGallery) {
-                document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
-                inGallery = true;
-            }
-        }
-
-        // Función para desplazarse hacia arriba
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Al cargar la página, mostrar todos los dibujos y desplazarse al inicio
-        window.onload = function () {
-            showCategory('all');
-            scrollToTop();
-        };
-
-        // Agregar evento para el enlace de Home
-        document.querySelector('a[href="#home"]').addEventListener('click', function (event) {
-            event.preventDefault();
-            scrollToTop();
-        });
-
-        // Agregar evento para el enlace de Galería
-        document.querySelector('a[href="#galeria"]').addEventListener('click', function (event) {
-            event.preventDefault();
-            inGallery = true;
-            document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
-        });
-
-        // Agregar evento para los enlaces de las categorías
-        const categoryLinks = document.querySelectorAll('.dropdown-menu a');
-        categoryLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const category = this.textContent.toLowerCase();
-                showCategory(category);
-                document.getElementById('galeria').scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-
-    </script>
 </body>
 
 </html>
